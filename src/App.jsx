@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { signInwithGoogle, signOutUser } from "./firebase/auth";
 import { Button, Flex, Heading } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState(null);
-
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const user = await signInwithGoogle();
       if (user) {
         setUser(user);
+        navigate("/note");
       }
     } catch (error) {
       alert("user not present", error);
@@ -27,7 +29,7 @@ const App = () => {
     <div>
       <Flex direction={"column"} justify={"center"} textAlign={"center"}>
         <Heading m={50} color={"blue"}>
-          WELCOME NOTES APP LOGIN
+          WELCOME NOTES APP
         </Heading>
         {user ? (
           <div>
