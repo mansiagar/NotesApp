@@ -1,12 +1,13 @@
 import { addNotes, fetchNotes } from "@/redux/action";
-import { Box, Button, Flex, Heading, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NotesList from "./NotesList";
 
 const NoteForm = () => {
   const [newNotes, setNotes] = useState("");
   const notes = useSelector((state) => state.notes);
-  console.log(notes);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchNotes());
@@ -37,6 +38,19 @@ const NoteForm = () => {
             ADD NOTES
           </Button>
         </Flex>
+        {notes &&
+          notes.map((note) => {
+            return (
+              <div key={note.id}>
+                <Flex justify={"center"} textAlign={"center"} direction={"row"}>
+                  <Box p={10} bg={"grey"} m={5} borderRadius={10} width={300}>
+                    <Text>{note.text}</Text>
+                    <Button bg={"red"}>Delete</Button>
+                  </Box>
+                </Flex>
+              </div>
+            );
+          })}
       </Box>
     </div>
   );

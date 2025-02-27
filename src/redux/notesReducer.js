@@ -11,7 +11,7 @@ export const notesReduer = (state = initialState, action) => {
     case FETCH_NOTES:
       return { ...state, notes: action.payload };
     case ADD_NOTES:
-      return { ...state, notes: [...action.payload, ...state.newNotes] };
+      return { ...state, notes: [...state.notes, action.payload] };
     default:
       return state;
   }
