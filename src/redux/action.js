@@ -11,10 +11,28 @@ export const fetchNotes = () => async (dispatch) => {
   try {
     const response = await axios.get(URL);
     const data = response.data;
-    console.log(data);
-    // const notes = data?
-    // dispatch({ type: FETCH_NOTES, payload: data });
+
+    const notes = data
+      ? Object.entries(data).map(([id, val]) => ({ id, ...val }))
+      : [];
+    console.log(notes);
+    dispatch({ type: FETCH_NOTES, payload: notes });
   } catch (error) {
     console.log("fetching notes error", error);
+  }
+};
+
+// add notes
+export const addNotes = (newNotes) => async (dispatch) => {
+  try {
+    const response = await axios.post(URL, {
+      ...newNotes,
+    });
+    dispatch({
+      type: ADD_NOTES,
+      payload: { id: (await response).data.name, ...newNotes },
+    });
+  } catch (error) {
+    console.log("add notes error", error);
   }
 };
