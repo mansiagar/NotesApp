@@ -9,6 +9,14 @@ const Home = () => {
     <div>
       {user ? (
         <div>
+          <h2>Welcome, {user.displayName}!</h2>
+          <p>Email: {user.email}</p>
+          <img
+            src={user.photoURL}
+            alt="Profile"
+            style={{ width: "100px", borderRadius: "50%" }}
+          />
+          <br />
           <button>Logout</button>
         </div>
       ) : (
