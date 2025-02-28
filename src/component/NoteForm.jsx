@@ -2,7 +2,6 @@ import { addNotes, fetchNotes } from "@/redux/action";
 import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NotesList from "./NotesList";
 
 const NoteForm = () => {
   const [newNotes, setNotes] = useState("");
