@@ -5,13 +5,13 @@ import { Provider as ChakraProvider } from "./components/ui/provider";
 import { HashRouter } from "react-router-dom";
 import { store } from "./redux/store";
 
-import Routing from "./Route";
+import App from "./App";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <HashRouter>
       <ChakraProvider>
-        <Routing />
+        <App />
       </ChakraProvider>
     </HashRouter>
   </Provider>
