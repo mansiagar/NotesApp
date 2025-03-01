@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 
 import Navbar from "./components/ui/feature/Navbar";
 import NoteForm from "./component/NoteForm";
+import Login from "./components/ui/feature/Login";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/noteForm" element={<NoteForm />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </div>
   );

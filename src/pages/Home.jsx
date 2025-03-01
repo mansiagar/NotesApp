@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Login from "./Login";
+import Signup from "@/components/ui/feature/Signup";
 //import NoteForm from "@/component/NoteForm";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
       ) : (
         <div>
           <Login />
+          <Signup />
         </div>
       )}
     </div>
