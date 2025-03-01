@@ -3,7 +3,6 @@ import Login from "./Login";
 
 const Home = () => {
   const user = useSelector((state) => state.auth.user);
-  console.log(user.email, "in home");
 
   return (
     <div>
