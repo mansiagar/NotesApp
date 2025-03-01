@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Login from "./Login";
+//import NoteForm from "@/component/NoteForm";
 
 const Home = () => {
   const user = useSelector((state) => state.auth.user);

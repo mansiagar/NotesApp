@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const NoteForm = () => {
   const [newNotes, setNotes] = useState("");
-  const notes = useSelector((state) => state.notes);
+  const notes = useSelector((state) => state.notes.notes);
+  const user = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,6 +18,7 @@ const NoteForm = () => {
       const newnotes = {
         text: newNotes,
         id: Date.now(),
+        email: user.email,
       };
       dispatch(addNotes(newnotes));
       setNotes("");
@@ -44,6 +46,8 @@ const NoteForm = () => {
                 <Flex justify={"center"} textAlign={"center"} direction={"row"}>
                   <Box p={10} bg={"grey"} m={5} borderRadius={10} width={300}>
                     <Text>{note.text}</Text>
+                    <Text>{note.email}</Text>
+                    <Text>{note.id}</Text>
                     <Button bg={"red"}>Delete</Button>
                   </Box>
                 </Flex>
