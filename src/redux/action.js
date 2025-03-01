@@ -36,3 +36,14 @@ export const addNotes = (newNotes) => async (dispatch) => {
     console.log("add notes error", error);
   }
 };
+
+//delete notes
+export const deleteNote = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`https://notesapp-634d1-default-rtdb.firebaseio.com/notes/${id}.json
+`);
+    dispatch({ type: DELETE_NOTES, payload: id });
+  } catch (error) {
+    console.error("Error deleting note", error);
+  }
+};

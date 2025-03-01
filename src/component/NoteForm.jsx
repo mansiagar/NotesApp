@@ -1,4 +1,4 @@
-import { addNotes, fetchNotes } from "@/redux/action";
+import { addNotes, deleteNote, fetchNotes } from "@/redux/action";
 import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +48,12 @@ const NoteForm = () => {
                     <Text>{note.text}</Text>
                     <Text>{note.email}</Text>
                     <Text>{note.id}</Text>
-                    <Button bg={"red"}>Delete</Button>
+                    <Button
+                      bg={"red"}
+                      onClick={() => dispatch(deleteNote(note.id))}
+                    >
+                      Delete
+                    </Button>
                   </Box>
                 </Flex>
               </div>
